@@ -5,7 +5,8 @@ export const makeClassData = (data: ApiDataInterface[]) => {
   
     data.map((el) => {
       const count = el.Alcohol
-      const gamma = ((el.Ash as number) * (el.Hue as number)) / (el.Magnesium as number)
+      let gamma = ((el.Ash as number) * (el.Hue as number)) / (el.Magnesium as number)
+      gamma = Math.round(gamma * 1000) / 1000
   
       if (`Class ${count}` in alcoholClassesObject) {
         alcoholClassesObject[`Class ${count}`] = {
